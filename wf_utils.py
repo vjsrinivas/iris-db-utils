@@ -4,13 +4,15 @@ from scipy.io import loadmat
 from PIL import Image
 import random
 import cv2
+from config import config
+from viz import viz_display
 
 # configurable
-WIDER_ROOT = '/home/vijay/datasets/WIDERFACE'
-WIDER_devkit = os.path.join(WIDER_ROOT, 'wider_face_split')
-WIDER_val = os.path.join(WIDER_ROOT, 'WIDER_val')
-WIDER_train = os.path.join(WIDER_ROOT, 'WIDER_train')
-WIDER_test = os.path.join(WIDER_ROOT, 'WIDER_test')
+WIDER_ROOT = config.WIDER_ROOT
+WIDER_devkit = config.WIDER_devkit
+WIDER_val = config.WIDER_val
+WIDER_train = config.WIDER_train
+WIDER_test = config.WIDER_test
 
 def convert(size, box):
     dw = 1./size[0]
@@ -151,23 +153,6 @@ def grab_random(_type='val', seed=10):
     _val = get_list(_type)
     random.seed(seed)
     return random.choice(_val)
-   
-def viz_display(path, list_bboxes):
-    path = path.strip()
-    image_id = "%s/%s"%(path.split('/')[-2], path.split('/')[-1])
-    img = cv2.imread(path)
-    bboxes = list_bboxes[image_id]
-    #if img == None:
-        #print('Img not loaded currently!')
-        #return None
-
-    for obj in bboxes:
-        x1, y1, x2, y2 = obj['x1'], obj['y1'], obj['x1']+obj['w'], obj['y1']+obj['h']
-        cv2.rectangle(img, (x1, y1), (x2, y2), (0,0,255), 2)
-
-    cv2.imshow('visualize img', img)
-    cv2.waitKey(-1)
-    
 
 # debugging only:
 if __name__ == '__main__':
