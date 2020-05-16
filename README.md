@@ -1,6 +1,9 @@
-## WIDER FACE Utility Functions
-**Purpose:** This project is to store commonly used functions that someone using the [WIDER FACE](http://shuoyang1213.me/WIDERFACE/) dataset would need.
+# IRIS Database Utility Functions
+----
+**Purpose:** This project is to store commonly used functions that someone using the following databases would need:
+* [WIDER FACE](http://shuoyang1213.me/WIDERFACE/)
 
+## WIDER FACE Utility Functions
 ### Usage:
 WIP
 
